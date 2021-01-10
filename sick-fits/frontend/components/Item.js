@@ -8,13 +8,13 @@ import formatMoney from '../lib/formatMoney';
 
 export default class Item extends Component {
     static propTypes = {
-        item: PropTypes.shape({
+        // item: PropTypes.shape({
             item: PropTypes.object.isRequired,
             // title: PropTypes.string.isRequired,
             // price: PropTypes.number.isRequired,
-        }),
+        // }),
 
-        }
+        };
 
     render() {
         const { item } =this.props;
@@ -22,7 +22,7 @@ export default class Item extends Component {
             <ItemStyles>
                 {item.image && <img src={item.image} alt={item.title} />}
                 {/* {item.image ? <img /> : null} */}
-                
+
                 <Title>
                     <Link  href={{
                         pathname: '/item',
@@ -47,6 +47,6 @@ export default class Item extends Component {
                     <button>Delete</button>
                 </div>
             </ItemStyles>
-        )
+        );
     }
 }

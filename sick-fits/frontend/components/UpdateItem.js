@@ -5,8 +5,6 @@ import Router from 'next/router';
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
-import { id } from 'date-fns/locale';
-import { isThursdayWithOptions } from 'date-fns/fp';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -41,9 +39,7 @@ const UPDATE_ITEM_MUTATION = gql`
 `;
 
 class UpdateItem extends Component {
-  state = {
-    
-  };
+  state = {};
   handleChange = e => {
     const { name, type, value } = e.target;
     const val = type === 'number' ? parseFloat(value) : value;
@@ -60,22 +56,25 @@ class UpdateItem extends Component {
               ...this.state,
           }
       });
+      console.log("Updated!!!")
   }
 
   render() {
     return (
-        <Query query={SINGLE_ITEM_QUERY} variables={{
-            id: this.props.id
+        <Query 
+        query={SINGLE_ITEM_QUERY} 
+        variables={{
+            id: this.props.id,
         }}>
-            {({data, loading}) => {
+            {({ data, loading }) => {
                 if(loading) return <p>Loading...</p>;
                 if(!data.item) return <p>No Item Found for ID
                     {this.props.id}
-                </p>
+                </p>;
                 return(
       <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
         {(updateItem, { loading, error }) => (
-          <Form onSubmit={e => isThursdayWithOptions.updateItem(e, updateItem)}>
+          <Form onSubmit={e => this.updateItem(e, updateItem)}>
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
 
