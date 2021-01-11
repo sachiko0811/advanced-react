@@ -1,4 +1,3 @@
-import { de } from 'date-fns/locale';
 import SingleItem from '../components/SingleItem';
 
 const Item = props => (
