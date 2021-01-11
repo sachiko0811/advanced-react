@@ -35,7 +35,6 @@ class Items extends Component {
         return(
             <Center>
             <div>
-                <p>Items!</p>
                 <Query query={ALL_ITEMS_QUERY}>
                     {({ data, error, loading })  => {
                         console.log(data.items);
