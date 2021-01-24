@@ -58,7 +58,10 @@ class CreateItem extends Component {
   };
   render() {
     return (
-      <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+      <Mutation 
+      // refetchQueries={}  // not a good way
+      mutation={CREATE_ITEM_MUTATION} 
+      variables={this.state}>
         {(createItem, { loading, error }) => (
           <Form
             data-test="form"
