@@ -27,7 +27,7 @@ const Pagination = props => (
                 // if (error) return <Error error={error} />;
 
                 const count = data.itemsConnection.aggregate.count;
-                console.log(count)
+                // console.log(count)
                 const pages = Math.ceil(count / perPage);
                 const page = props.page;
             return (

@@ -39,6 +39,7 @@ class Items extends Component {
                 <Pagination page={this.props.page}></Pagination>
                     <Query 
                     query={ALL_ITEMS_QUERY}
+                    // fetchPolicy="network-only" //  this is not a good way
                     variables={{
                         skip: this.props.page * perPage - perPage,
                         first: perPage,
